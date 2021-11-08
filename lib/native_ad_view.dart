@@ -12,10 +12,10 @@ typedef NativeAdViewCreatedCallback = void Function(
 class NativeAdView extends StatefulWidget {
   /// Create a NativeAdView
   const NativeAdView({
-    Key key,
+    Key? key,
     this.onParentViewCreated,
-    this.androidParam,
-    this.iosParam,
+    required this.androidParam,
+    required this.iosParam,
     this.onAdImpression,
     this.onAdLeftApplication,
     this.onAdClicked,
@@ -24,7 +24,7 @@ class NativeAdView extends StatefulWidget {
   }) : super(key: key);
 
   /// Called when PlatformView created.
-  final NativeAdViewCreatedCallback onParentViewCreated;
+  final NativeAdViewCreatedCallback? onParentViewCreated;
 
   /// Android parameter for ad.
   final AndroidParam androidParam;
@@ -33,19 +33,19 @@ class NativeAdView extends StatefulWidget {
   final IOSParam iosParam;
 
   /// Called when an impression is recorded for an ad.
-  final Function() onAdImpression;
+  final Function()? onAdImpression;
 
   /// Called when an ad leaves the application (e.g., to go to the browser).
-  final Function() onAdLeftApplication;
+  final Function()? onAdLeftApplication;
 
   /// Called when a click is recorded for an ad.
-  final Function() onAdClicked;
+  final Function()? onAdClicked;
 
   /// Called when an ad request failed.
-  final Function(Map<String, dynamic>) onAdFailedToLoad;
+  final Function(Map<String, dynamic>)? onAdFailedToLoad;
 
   /// Called when an ad is received.
-  final Function() onAdLoaded;
+  final Function()? onAdLoaded;
 
   @override
   State<StatefulWidget> createState() => _NativeAdViewState(
@@ -91,7 +91,7 @@ class _NativeAdViewState extends State<NativeAdView> {
     }
     final NativeAdViewController controller = NativeAdViewController._(id);
     controller._channel.setMethodCallHandler(delegate.handleMethod);
-    widget.onParentViewCreated(controller);
+    widget.onParentViewCreated!(controller);
   }
 }
 

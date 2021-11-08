@@ -13,7 +13,14 @@ class AndroidParam {
   String attributionText;
 
   /// Test device ids.
-  List<String> testDevices;
+  List<String> testDevices = [];
+
+  AndroidParam(
+      {required this.placementId,
+      required this.packageName,
+      required this.layoutName,
+      required this.attributionText,
+      required this.testDevices});
 
   /// Converts this param to a Map
   dynamic toMap() {
@@ -42,7 +49,14 @@ class IOSParam {
   String attributionText;
 
   /// Test device ids.
-  List<String> testDevices;
+  List<String> testDevices = [];
+
+  IOSParam(
+      {required this.placementId,
+      required this.bundleId,
+      required this.layoutName,
+      required this.attributionText,
+      required this.testDevices});
 
   /// Converts this param to a Map
   dynamic toMap() {
